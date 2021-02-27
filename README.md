@@ -11,7 +11,6 @@
 - **storybook**
 - **jest**
 - **react-testing-library**
-- **editorconfig**
 - **eslint**
 - **prettier**
 - **husky**
