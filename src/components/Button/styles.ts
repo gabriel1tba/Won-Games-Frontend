@@ -42,6 +42,7 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size, fillWidth, hasIcon }) => css`
+    cursor: pointer;
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
     border: 0;

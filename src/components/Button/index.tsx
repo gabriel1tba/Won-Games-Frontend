@@ -5,6 +5,7 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   fillWidth?: boolean;
   icon?: JSX.Element;
+  onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button = ({
@@ -12,8 +13,9 @@ const Button = ({
   icon,
   size = 'medium',
   fillWidth = false,
+  ...props
 }: ButtonProps) => (
-  <S.Wrapper size={size} fillWidth={fillWidth} hasIcon={!!icon}>
+  <S.Wrapper size={size} fillWidth={fillWidth} hasIcon={!!icon} {...props}>
     {icon}
     {!!children && <span>{children}</span>}
   </S.Wrapper>
