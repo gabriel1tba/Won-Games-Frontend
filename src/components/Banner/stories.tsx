@@ -11,6 +11,9 @@ export default {
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death',
   },
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;
 
 export const Default: Story<BannerProps> = (args) => <Banner {...args} />;
