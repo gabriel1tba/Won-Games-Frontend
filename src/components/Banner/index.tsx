@@ -20,8 +20,8 @@ const Banner = ({
   buttonLabel,
   buttonLink,
   ribbon = 'My Ribbon',
-  ribbonColor = 'secondary',
-  ribbonSize = 'small',
+  ribbonColor = 'primary',
+  ribbonSize = 'normal',
 }: BannerProps) => (
   <S.Wrapper>
     <S.Image src={img} role="img" aria-label={title} />
