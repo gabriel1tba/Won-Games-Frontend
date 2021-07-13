@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Banner /> should render the heading 1`] = `
-.c5 {
+.c7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -27,8 +27,50 @@ exports[`<Banner /> should render the heading 1`] = `
   padding: 0.8rem 4.8rem;
 }
 
-.c5:hover {
+.c7:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
+}
+
+.c3 {
+  position: absolute;
+  top: 1.6rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  color: #FAFAFA;
+  background-color: #3CD3C1;
+  font-size: 1.2rem;
+  padding: 0 1.6rem;
+  height: 2.6rem;
+  right: -1.5rem;
+}
+
+.c3::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  border-style: solid;
+  border-left-width: 0rem;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-bottom-width: 1rem;
+}
+
+.c3::before {
+  border-left-color: #1f8a7d;
+  border-top-color: #1f8a7d;
+}
+
+.c3::before {
+  top: 2.6rem;
+  border-top-width: 0.7rem;
+  border-right-width: 1.5rem;
 }
 
 .c0 {
@@ -44,28 +86,38 @@ exports[`<Banner /> should render the heading 1`] = `
   background-size: cover;
 }
 
-.c2 {
+.c4 {
   width: 100%;
   background-color: rgba(0,0,0,0.7);
   padding: 2.4rem;
 }
 
-.c3 {
+.c5 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #FAFAFA;
 }
 
-.c4 {
+.c6 {
   color: #FAFAFA;
   font-size: 1.4rem;
   font-weight: 400;
   margin-bottom: 1.6rem;
 }
 
-.c4 strong {
+.c6 strong {
   color: #F231A5;
   font-weight: 0.8rem;
+}
+
+@media (max-width:1170px) {
+  .c0 .c2 {
+    right: 0;
+  }
+
+  .c0 .c2::before {
+    display: none;
+  }
 }
 
 @media (min-width:768px) {
@@ -81,7 +133,7 @@ exports[`<Banner /> should render the heading 1`] = `
 }
 
 @media (min-width:768px) {
-  .c2 {
+  .c4 {
     border-radius: 0 0 0.4rem 0.4rem;
     padding: 4.0rem;
     position: absolute;
@@ -91,13 +143,13 @@ exports[`<Banner /> should render the heading 1`] = `
 }
 
 @media (min-width:768px) {
-  .c3 {
+  .c5 {
     font-size: 2.8rem;
   }
 }
 
 @media (min-width:768px) {
-  .c4 {
+  .c6 {
     font-size: 1.8rem;
   }
 }
@@ -112,15 +164,21 @@ exports[`<Banner /> should render the heading 1`] = `
     src="https://source.unsplash.com/user/willianjusten/1042x580"
   />
   <div
-    class="c2"
+    class="c2 c3"
+    color="secondary"
+  >
+    My Ribbon
+  </div>
+  <div
+    class="c4"
   >
     <h2
-      class="c3"
+      class="c5"
     >
       Defy death
     </h2>
     <h3
-      class="c4"
+      class="c6"
     >
       <p>
         Play the new 
@@ -131,7 +189,7 @@ exports[`<Banner /> should render the heading 1`] = `
       </p>
     </h3>
     <a
-      class="c5"
+      class="c7"
       href="/games/defy-death"
     >
       <span>
