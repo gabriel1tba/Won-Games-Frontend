@@ -3,18 +3,19 @@ import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/A
 
 import * as S from './styles';
 
-import GameCard, { GameCardProps } from 'components/GameCard';
 import Slider, { SliderSettings } from 'components/Slider';
+import GameCard, { GameCardProps } from 'components/GameCard';
 
 import v4 from 'utils/uuidv4';
 
-type GameCardSliderProps = {
+export type GameCardSliderProps = {
   items: GameCardProps[];
   color?: 'white' | 'black';
 };
 
 const settings: SliderSettings = {
   slidesToShow: 4,
+  arrows: true,
   infinite: false,
   lazyLoad: 'ondemand',
   responsive: [
