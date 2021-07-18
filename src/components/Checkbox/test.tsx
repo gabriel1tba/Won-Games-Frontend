@@ -5,12 +5,10 @@ import Checkbox from '.';
 
 describe('<Checkbox />', () => {
   it('should render the heading', () => {
-    const { container } = renderWithTheme(<Checkbox />);
+    renderWithTheme(<Checkbox />);
 
     expect(
       screen.getByRole('heading', { name: /Checkbox/i }),
     ).toBeInTheDocument();
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });
