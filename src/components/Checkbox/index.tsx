@@ -1,8 +1,14 @@
 import * as S from './styles';
 
-const Checkbox = () => (
+export type CheckBoxType = {
+  label?: string;
+  labelFor?: string;
+};
+
+const Checkbox = ({ label, labelFor = '' }: CheckBoxType) => (
   <S.Wrapper>
-    <h1>Checkbox</h1>
+    <input type="checkbox" id={labelFor} />
+    {!!label && <label htmlFor={labelFor}>{label}</label>}
   </S.Wrapper>
 );
 

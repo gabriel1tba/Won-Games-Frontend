@@ -4,11 +4,16 @@ import renderWithTheme from 'utils/tests/helpers';
 import Checkbox from '.';
 
 describe('<Checkbox />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Checkbox />);
+  it('should render with label', () => {
+    renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />);
 
-    expect(
-      screen.getByRole('heading', { name: /Checkbox/i }),
-    ).toBeInTheDocument();
+    // Pegando input a partir do papel/role
+    expect(screen.getByRole('checkbox')).toBeInTheDocument();
+
+    // Pegando input a partir da label associada
+    expect(screen.getByLabelText(/checkbox label/i)).toBeInTheDocument();
+
+    // pegando label a partir do texto dela
+    expect(screen.getByText(/checkbox label/i)).toHaveAttribute('for', 'check');
   });
 });
