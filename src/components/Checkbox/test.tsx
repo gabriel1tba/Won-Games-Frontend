@@ -16,4 +16,10 @@ describe('<Checkbox />', () => {
     // pegando label a partir do texto dela
     expect(screen.getByText(/checkbox label/i)).toHaveAttribute('for', 'check');
   });
+
+  it('should render without label', () => {
+    renderWithTheme(<Checkbox labelFor="check" />);
+
+    expect(screen.queryByLabelText('checkbox')).not.toBeInTheDocument();
+  });
 });
