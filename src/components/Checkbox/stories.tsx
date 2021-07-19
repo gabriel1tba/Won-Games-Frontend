@@ -4,6 +4,9 @@ import Checkbox, { CheckBoxProps } from '.';
 export default {
   title: 'Checkbox',
   component: Checkbox,
+  argTypes: {
+    onCheck: { action: 'checked' },
+  },
 } as Meta;
 
 export const Default: Story<CheckBoxProps> = (args) => <Checkbox {...args} />;

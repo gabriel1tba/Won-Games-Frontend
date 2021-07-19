@@ -21,7 +21,7 @@ const Checkbox = ({
     setChecked((prev) => !prev);
 
     if (onCheck) {
-      onCheck(checked);
+      onCheck(!checked);
     }
   };
 
