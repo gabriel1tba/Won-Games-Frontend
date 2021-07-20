@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, InputHTMLAttributes } from 'react';
 
 import * as S from './styles';
 
@@ -7,7 +7,7 @@ export type TextFieldProps = {
   label?: string;
   labelFor?: string;
   initialValue?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const TextField = ({
   label,
