@@ -23,9 +23,10 @@ const Checkbox = ({
   const [checked, setChecked] = useState(isChecked);
 
   const onChange = () => {
-    setChecked((prev) => !prev);
+    const status = !checked; // true => false => true
+    setChecked(status);
 
-    !!onCheck && onCheck(!checked);
+    onCheck && onCheck(status);
   };
 
   return (

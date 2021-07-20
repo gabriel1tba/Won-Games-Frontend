@@ -1,16 +1,35 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
-export const InputWrapper = styled.div`
-  ${({ theme }) => css`
+type InputProps = {
+  hasIcon: boolean;
+};
+
+const wrapperModifiers = {
+  withIcon: (theme: DefaultTheme) => css`
+    svg {
+      width: 1.5rem;
+
+      & + span {
+        margin-left: ${theme.spacings.xxsmall};
+      }
+    }
+  `,
+};
+
+export const InputWrapper = styled.div<InputProps>`
+  ${({ theme, hasIcon }) => css`
     display: flex;
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
     padding: 0 ${theme.spacings.xsmall};
     border: 0.2rem solid;
     border-color: ${theme.colors.lightGray};
+
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
     }
+
+    ${!!hasIcon && wrapperModifiers.withIcon(theme)};
   `}
 `;
 

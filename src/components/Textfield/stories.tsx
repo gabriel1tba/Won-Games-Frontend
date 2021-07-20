@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { Text } from '@styled-icons/boxicons-regular/Text';
 import TextField, { TextFieldProps } from '.';
 
 export default {
@@ -10,9 +11,13 @@ export default {
     id: 'Email',
     initialValue: '',
     placeholder: 'john.cage@gmail.com',
+    icon: <Text />,
   },
   argTypes: {
     onInput: { action: 'changed' },
+    icon: {
+      type: '',
+    },
   },
 } as Meta;
 
