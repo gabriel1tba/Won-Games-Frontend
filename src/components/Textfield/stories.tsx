@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Text } from '@styled-icons/boxicons-regular/Text';
+import { Email } from '@styled-icons/material-outlined';
 import TextField, { TextFieldProps } from '.';
 
 export default {
@@ -11,13 +11,12 @@ export default {
     id: 'Email',
     initialValue: '',
     placeholder: 'john.cage@gmail.com',
-    icon: <Text />,
+    icon: <Email />,
+    iconPosition: 'left',
   },
   argTypes: {
     onInput: { action: 'changed' },
-    icon: {
-      type: '',
-    },
+    icon: { type: '' },
   },
 } as Meta;
 
@@ -26,3 +25,13 @@ export const Default: Story<TextFieldProps> = (args) => (
     <TextField {...args} />
   </div>
 );
+
+export const withError: Story<TextFieldProps> = (args) => (
+  <div style={{ maxWidth: 300, padding: 15 }}>
+    <TextField {...args} />
+  </div>
+);
+
+withError.args = {
+  error: 'Ops...something is wrong',
+};
