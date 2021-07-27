@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import renderWithTheme from 'utils/tests/helpers';
+import v4 from 'utils/uuidv4';
 
 import Logo from '.';
 
@@ -47,5 +48,12 @@ describe('<Logo />', () => {
       '5.8rem',
       { media: '(max-width: 768px)' },
     );
+  });
+
+  it('should render the logo with id passed', () => {
+    const id = v4();
+    const { container } = renderWithTheme(<Logo id={id} />);
+
+    expect(container.querySelector(`#paint_linear_${id}`)).toBeInTheDocument();
   });
 });

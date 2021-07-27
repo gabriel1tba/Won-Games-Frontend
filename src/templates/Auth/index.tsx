@@ -1,5 +1,6 @@
 import Heading from 'components/Heading';
 import Logo from 'components/Logo';
+import v4 from 'utils/uuidv4';
 import * as S from './styles';
 
 export type AuthProps = {
@@ -11,7 +12,7 @@ const Auth = ({ title, children }: AuthProps) => (
   <S.Wrapper>
     <S.BannerBlock>
       <S.BannerContent>
-        <Logo />
+        <Logo id={v4()} />
         <div>
           <Heading>All your favorite games in one place</Heading>
           <S.Subtitle>
@@ -24,7 +25,7 @@ const Auth = ({ title, children }: AuthProps) => (
 
     <S.Content>
       <S.ContentWrapper>
-        <Logo color="black" size="large" />
+        <Logo color="black" size="large" id={v4()} />
         <Heading color="black" lineColor="secondary" lineLeft>
           {title}
         </Heading>
