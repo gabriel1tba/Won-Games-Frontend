@@ -5,7 +5,7 @@ import FormSignIn from '.';
 
 describe('<FormSignIn />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<FormSignIn />);
+    const { container } = renderWithTheme(<FormSignIn />);
 
     // verifique email
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument();
@@ -17,6 +17,8 @@ describe('<FormSignIn />', () => {
     expect(
       screen.getByRole('button', { name: /Sign in now/i }),
     ).toBeInTheDocument();
+
+    expect(container.parentElement).toMatchSnapshot();
   });
 
   it('should render the forgot password link', () => {
