@@ -14,7 +14,7 @@ const Auth = ({ title, children }: AuthProps) => (
       <S.BannerContent>
         <Logo id={v4()} />
         <div>
-          <Heading>All your favorite games in one place</Heading>
+          <Heading size="huge">All your favorite games in one place</Heading>
           <S.Subtitle>
             <strong>WON</strong> is best most complete gaming plataform
           </S.Subtitle>
