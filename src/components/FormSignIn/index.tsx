@@ -4,10 +4,12 @@ import { Email, Lock } from '@styled-icons/material-outlined';
 import Button from 'components/Button';
 import TextField from 'components/Textfield';
 
+import { FormWrapper, FormLink } from '../Form';
+
 import * as S from './styles';
 
 const FormSignIn = () => (
-  <S.Wrapper>
+  <FormWrapper>
     <form>
       <TextField
         name="email"
@@ -27,14 +29,14 @@ const FormSignIn = () => (
         Sign in now
       </Button>
 
-      <S.FormLink>
+      <FormLink>
         Don’t have an account?{' '}
         <Link href="/sign-up">
           <a>Sign up</a>
         </Link>
-      </S.FormLink>
+      </FormLink>
     </form>
-  </S.Wrapper>
+  </FormWrapper>
 );
 
 export default FormSignIn;
