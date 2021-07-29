@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import Heading from 'components/Heading';
 import Logo from 'components/Logo';
-import v4 from 'utils/uuidv4';
 import * as S from './styles';
 
 export type AuthProps = {
@@ -12,7 +13,11 @@ const Auth = ({ title, children }: AuthProps) => (
   <S.Wrapper>
     <S.BannerBlock>
       <S.BannerContent>
-        <Logo id={v4()} />
+        <Link href="/">
+          <a>
+            <Logo id="side-a" />
+          </a>
+        </Link>
         <div>
           <Heading size="huge">All your favorite games in one place</Heading>
           <S.Subtitle>
@@ -25,7 +30,11 @@ const Auth = ({ title, children }: AuthProps) => (
 
     <S.Content>
       <S.ContentWrapper>
-        <Logo color="black" size="large" id={v4()} />
+        <Link href="/">
+          <a>
+            <Logo color="black" size="large" id="side-b" />
+          </a>
+        </Link>
         <Heading color="black" lineColor="secondary" lineLeft>
           {title}
         </Heading>
