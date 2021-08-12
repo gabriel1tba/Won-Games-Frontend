@@ -4,7 +4,7 @@ import FormSignUp from 'components/FormSignUp';
 
 const SignUp = () => (
   <Auth title="Sign Up">
-    <FormSignUp />
+    <h1>opa</h1>
   </Auth>
 );
 
