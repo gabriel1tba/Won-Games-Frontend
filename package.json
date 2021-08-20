@@ -40,8 +40,8 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "6.3.7",
-    "@storybook/react": "6.3.7",
+    "@storybook/addon-essentials": "6.3.4",
+    "@storybook/react": "6.3.4",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.2.0",
@@ -59,13 +59,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "jest": "^27.0.3",
     "jest-styled-components": "^7.0.4",
     "lint-staged": "^11.0.0",
     "plop": "^2.7.4",
     "prettier": "^2.3.0",
-    "storybook-addon-next-router": "^3.0.7",
+    "storybook-addon-next-router": "2.0.4",
     "typescript": "4.2.4"
   }
 }
