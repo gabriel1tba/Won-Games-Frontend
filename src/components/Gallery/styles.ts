@@ -66,7 +66,6 @@ export const Modal = styled.div<ModalProps>`
     align-items: center;
     z-index: ${theme.layers.modal};
     transition: opacity ${theme.transition.default};
-
     ${isOpen && modalModifiers.open()}
     ${!isOpen && modalModifiers.close()}
   `}
@@ -83,4 +82,9 @@ export const Close = styled.div`
     height: 100%;
     text-align: right;
   `}
+`;
+
+export const Body = styled.div`
+  max-width: min(120rem, 100%);
+  max-height: 80rem;
 `;

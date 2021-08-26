@@ -23,4 +23,4 @@ export default [
     src: '/img/games/cyberpunk-6.jpg',
     label: 'Gallery Image 6',
   },
-] as const;
+];
