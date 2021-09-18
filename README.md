@@ -11,9 +11,7 @@
 - **storybook**
 - **jest**
 - **react-testing-library**
-- **husky**
-- **lint-staged**
-- **github-actions**
+- **husky + lint-staged**
 - **plop**
 - **styled-components**
 
