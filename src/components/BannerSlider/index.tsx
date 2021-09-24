@@ -1,6 +1,7 @@
 import Banner, { BannerProps } from 'components/Banner';
 import Slider, { SliderSettings } from 'components/Slider';
-import v4 from 'utils/uuidv4';
+import { v4 } from 'uuid';
+
 import * as S from './styles';
 
 export type BannerSliderProps = {

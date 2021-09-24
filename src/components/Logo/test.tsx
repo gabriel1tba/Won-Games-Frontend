@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import renderWithTheme from 'utils/tests/helpers';
-import v4 from 'utils/uuidv4';
+import { v4 } from 'uuid';
 
 import Logo from '.';
 

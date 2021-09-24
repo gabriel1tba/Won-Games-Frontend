@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import { v4 } from 'uuid';
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos';
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos';
 import { Close } from '@styled-icons/material-outlined/Close';
 import SlickSlider from 'react-slick';
 
 import Slider, { SliderSettings } from 'components/Slider';
-
-import v4 from 'utils/uuidv4';
 
 import * as S from './styles';
 
