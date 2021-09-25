@@ -1,9 +1,17 @@
-import * as S from './styles';
+import Heading from 'components/Heading';
+import Container from 'components/Container';
+import Base from 'templates/Base';
 
-const Wishlist = () => (
-  <S.Wrapper>
-    <h1>Wishlist</h1>
-  </S.Wrapper>
+// import * as S from './styles';
+
+const WishlistTemplate = () => (
+  <Base>
+    <Container>
+      <Heading lineLeft lineColor="secondary">
+        Wishlist
+      </Heading>
+    </Container>
+  </Base>
 );
 
-export default Wishlist;
+export default WishlistTemplate;
