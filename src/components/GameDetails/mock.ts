@@ -5,4 +5,4 @@ export default {
   publisher: 'Walkabout',
   rating: 'BR0',
   genres: ['Role-playing'],
-} as const;
+};
