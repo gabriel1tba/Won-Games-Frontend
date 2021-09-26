@@ -1,8 +1,7 @@
 import GameInfo, { GameInfoProps } from 'components/GameInfo';
 import Gallery, { GalleryImageProps } from 'components/Gallery';
 import GameDetails, { GameDetailsProps } from 'components/GameDetails';
-import { GameCardProps } from 'components/GameCard';
-import { HighlightProps } from 'components/Highlight';
+import Divider from 'components/Divider';
 import Showcase from 'components/Showcase';
 
 import Base from 'templates/Base';
@@ -10,6 +9,9 @@ import Base from 'templates/Base';
 import TextContent from 'components/TextContent';
 
 import * as S from './styles';
+
+import { GameCardProps } from 'components/GameCard';
+import { HighlightProps } from 'components/Highlight';
 
 export type GameTemplateProps = {
   cover: string;
@@ -50,6 +52,7 @@ const Game = ({
 
       <S.SectionGameDetails>
         <GameDetails {...details} />
+        <Divider />
       </S.SectionGameDetails>
 
       <Showcase

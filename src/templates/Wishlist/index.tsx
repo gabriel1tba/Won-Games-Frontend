@@ -6,6 +6,7 @@ import GameCard, { GameCardProps } from 'components/GameCard';
 import Base from 'templates/Base';
 
 import Grid from 'components/Grid';
+import Divider from 'components/Divider';
 import Container from 'components/Container';
 
 // import * as S from './styles';
@@ -34,6 +35,7 @@ const WishlistTemplate = ({
           <GameCard key={v4()} {...game} />
         ))}
       </Grid>
+      <Divider />
     </Container>
 
     <Showcase
