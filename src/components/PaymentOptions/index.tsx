@@ -44,10 +44,10 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => (
       </S.CardsList>
     </S.Body>
     <S.Footer>
-      <Button as="a" fillWidth minimal>
+      <Button as="a" fullWidth minimal>
         Continue shopping
       </Button>
-      <Button fillWidth icon={<ShoppingCart />} onClick={handlePayment}>
+      <Button fullWidth icon={<ShoppingCart />} onClick={handlePayment}>
         Buy now
       </Button>
     </S.Footer>

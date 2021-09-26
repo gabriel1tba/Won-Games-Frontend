@@ -8,12 +8,7 @@ import cardsMock from './mock';
 describe('<PaymentOptions />', () => {
   it('should render the heading', () => {
     const { container } = renderWithTheme(
-      <PaymentOptions
-        handlePayment={() => {
-          console.log('test');
-        }}
-        cards={cardsMock}
-      />,
+      <PaymentOptions handlePayment={() => ({})} cards={cardsMock} />,
     );
 
     expect(

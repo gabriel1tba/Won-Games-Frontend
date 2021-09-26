@@ -36,7 +36,7 @@ const FormSignUp = () => (
         icon={<Lock />}
       />
 
-      <Button size="large" fillWidth>
+      <Button size="large" fullWidth>
         Sign up now
       </Button>
 
