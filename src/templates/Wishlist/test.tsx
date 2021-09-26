@@ -8,6 +8,7 @@ import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
 
 const props = {
+  games: gamesMock,
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock,
 };
@@ -22,6 +23,8 @@ jest.mock('components/Showcase', () => ({
 describe('<Wishlist />', () => {
   it('should render the heading', () => {
     renderWithTheme(<Wishlist {...props} />);
+
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(6);
 
     expect(
       screen.getByRole('heading', { name: /Wishlist/i }),

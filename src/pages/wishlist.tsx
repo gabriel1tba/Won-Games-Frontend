@@ -12,6 +12,7 @@ export default WishlistPage;
 export const getStaticProps = async () => {
   return {
     props: {
+      games: gamesMock,
       recommendedGames: gamesMock.slice(0, 5),
       recommendedHighlight: highlightMock,
     },
