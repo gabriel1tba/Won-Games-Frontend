@@ -1,11 +1,20 @@
+import 'match-media-mock';
 import { screen } from '@testing-library/react';
 import renderWithTheme from 'utils/tests/helpers';
 
 import Wishlist from '.';
 
+import gamesMock from 'components/GameCardSlider/mock';
+import highlightMock from 'components/Highlight/mock';
+
+const props = {
+  recommendedHighlight: highlightMock,
+  recommendedGames: gamesMock,
+};
+
 describe('<Wishlist />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<Wishlist />);
+    renderWithTheme(<Wishlist {...props} />);
 
     expect(
       screen.getByRole('heading', { name: /Wishlist/i }),
