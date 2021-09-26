@@ -54,8 +54,8 @@ const CartTemplate = ({
 
       <Showcase
         title="You may like these games"
-        games={recommendedGames}
         highlight={recommendedHighlight}
+        games={recommendedGames}
       />
     </Base>
   );
