@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@styled-icons/boxicons-regular": "^10.34.0",
-    "@styled-icons/boxicons-solid": "^10.34.0",
+    "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-brands": "^10.34.0",
     "@styled-icons/material-outlined": "^10.34.0",
     "@styled-icons/remix-fill": "^10.18.0",
@@ -59,7 +59,7 @@
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
     "jest": "^27.0.3",
