@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@styled-icons/boxicons-regular": "^10.34.0",
-    "@styled-icons/boxicons-solid": "^10.34.0",
+    "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-brands": "^10.34.0",
     "@styled-icons/material-outlined": "^10.34.0",
     "@styled-icons/remix-fill": "^10.18.0",
@@ -50,7 +50,7 @@
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.8",
     "@types/react-slick": "^0.23.5",
-    "@types/styled-components": "^5.1.9",
+    "@types/styled-components": "^5.1.14",
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
