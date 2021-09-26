@@ -12,6 +12,13 @@ const props = {
   recommendedGames: gamesMock,
 };
 
+jest.mock('components/Showcase', () => ({
+  __esModule: true,
+  default: function Mock() {
+    return <div data-testid="Mock Showcase" />;
+  },
+}));
+
 describe('<Wishlist />', () => {
   it('should render the heading', () => {
     renderWithTheme(<Wishlist {...props} />);
@@ -19,5 +26,7 @@ describe('<Wishlist />', () => {
     expect(
       screen.getByRole('heading', { name: /Wishlist/i }),
     ).toBeInTheDocument();
+
+    expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument();
   });
 });
