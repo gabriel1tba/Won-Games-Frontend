@@ -1,22 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProfileMenu /> should render the menu 1`] = `
-.c0 {
+.c2 {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 }
 
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 0.1rem solid #EAEAEA;
+}
+
+.c1 {
+  background: #FAFAFA;
+  color: #030517;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.6rem 2.4rem;
+  -webkit-transition: background,color,0.3s ease-in-out;
+  transition: background,color,0.3s ease-in-out;
+}
+
+.c1:hover {
+  background: #F231A5;
+  color: #FAFAFA;
+}
+
+.c1 > span {
+  margin-left: 1.6rem;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border: 0;
+  }
+
+  .c0 a:not(:last-child) {
+    border-bottom: 0.1rem solid #EAEAEA;
+  }
+}
+
+@media (max-width:768px) {
+  .c1 {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  .c1 > span {
+    display: none;
+  }
+}
+
 <nav
-  class=""
+  class="c0"
 >
   <a
-    class=""
+    class="c1"
     href="/profile/me"
   >
     <svg
       aria-hidden="true"
-      class="c0"
+      class="c2"
       fill="currentColor"
       focusable="false"
       height="24"
@@ -37,12 +101,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
     </span>
   </a>
   <a
-    class=""
+    class="c1"
     href="/profile/cards"
   >
     <svg
       aria-hidden="true"
-      class="c0"
+      class="c2"
       fill="currentColor"
       focusable="false"
       height="24"
@@ -63,12 +127,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
     </span>
   </a>
   <a
-    class=""
+    class="c1"
     href="/profile/orders"
   >
     <svg
       aria-hidden="true"
-      class="c0"
+      class="c2"
       fill="currentColor"
       focusable="false"
       height="24"
@@ -89,12 +153,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
     </span>
   </a>
   <a
-    class=""
+    class="c1"
     href="/logout"
   >
     <svg
       aria-hidden="true"
-      class="c0"
+      class="c2"
       fill="currentColor"
       focusable="false"
       height="24"
