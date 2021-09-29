@@ -31,6 +31,8 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   padding: 1.6rem 2.4rem;
   -webkit-transition: background,color,0.3s ease-in-out;
   transition: background,color,0.3s ease-in-out;
+  background: #FAFAFA;
+  color: #030517;
 }
 
 .c1:hover {
@@ -77,6 +79,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   <a
     class="c1"
     href="/profile/me"
+    title="My profile"
   >
     <svg
       aria-hidden="true"
@@ -103,6 +106,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   <a
     class="c1"
     href="/profile/cards"
+    title="My cards"
   >
     <svg
       aria-hidden="true"
@@ -129,6 +133,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   <a
     class="c1"
     href="/profile/orders"
+    title="My orders"
   >
     <svg
       aria-hidden="true"
