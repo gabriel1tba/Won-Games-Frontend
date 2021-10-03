@@ -35,7 +35,7 @@ const CartTemplate = ({
           My cart
         </Heading>
 
-        {items.length ? (
+        {items?.length ? (
           <S.Content>
             <CartList items={items} total={total} />
 
