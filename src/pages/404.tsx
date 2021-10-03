@@ -2,7 +2,7 @@ import Container from 'components/Container';
 import Empty from 'components/Empty';
 import Base from 'templates/Base';
 
-export default function Page404() {
+const Page404 = () => {
   return (
     <Base>
       <Container>
@@ -14,4 +14,6 @@ export default function Page404() {
       </Container>
     </Base>
   );
-}
+};
+
+export default Page404;
