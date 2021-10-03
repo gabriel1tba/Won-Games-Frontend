@@ -16,11 +16,14 @@ export const getServerSideProps = async () => {
 
   const { data } = await apolloClient.query({
     query: QUERY_GAMES,
+    variables: {
+      limit: 9,
+    },
   });
 
   return {
     props: {
-      revalidate: 60,
+      revalidate: 60 * 5,
       games: data.games.map((game) => ({
         title: game.name,
         developer: game.developers[0].name,
