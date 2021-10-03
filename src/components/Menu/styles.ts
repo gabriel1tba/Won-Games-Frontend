@@ -28,7 +28,7 @@ export const IconWrapper = styled.div`
   `}
 `;
 
-export const MenuGroups = styled.div`
+export const MenuGroup = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-grow: 1;

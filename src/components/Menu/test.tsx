@@ -10,25 +10,25 @@ describe('<Menu />', () => {
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument();
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument();
+    expect(screen.getAllByLabelText(/shopping cart/i)).toHaveLength(2);
   });
 
-  it('should handle the open/close menu', () => {
+  it('should handle the open/close mobile menu', () => {
     renderWithTheme(<Menu />);
 
-    // Selecionar o MenuFull
+    // selecionar o nosso MenuFull
     const fullMenuElement = screen.getByRole('navigation', { hidden: true });
 
-    // Verificar se o menu esta escondido
+    // verificar se o menu tá escondido
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true');
     expect(fullMenuElement).toHaveStyle({ opacity: 0 });
 
-    // Clicar para abrir e verificar se foi aberto
+    // clicar no botão de abrir o menu e verificar se ele abriu
     fireEvent.click(screen.getByLabelText(/open menu/i));
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('false');
     expect(fullMenuElement).toHaveStyle({ opacity: 1 });
 
-    // Clicar para fechar e verificar se fechou
+    // clicar no botão de fechar o menu e verificar se ele fechou
     fireEvent.click(screen.getByLabelText(/close menu/i));
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true');
     expect(fullMenuElement).toHaveStyle({ opacity: 0 });
@@ -37,19 +37,17 @@ describe('<Menu />', () => {
   it('should show register box when logged out', () => {
     renderWithTheme(<Menu />);
 
-    expect(screen.queryByText(/my account/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument();
-
     expect(screen.getByText(/sign up/i)).toBeInTheDocument();
     expect(screen.getAllByText(/sign in/i)).toHaveLength(2);
   });
 
-  it('should show wishlist and account when logged in', () => {
-    renderWithTheme(<Menu username="Gabriel" />);
+  it('should show wishlight and account when logged in', () => {
+    renderWithTheme(<Menu username="will" />);
 
-    expect(screen.getByText(/my account/i)).toBeInTheDocument();
-    expect(screen.getByText(/wishlist/i)).toBeInTheDocument();
-
+    expect(screen.getAllByText(/my profile/i)).toHaveLength(2);
+    expect(screen.getAllByText(/wishlist/i)).toHaveLength(2);
     expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
   });
