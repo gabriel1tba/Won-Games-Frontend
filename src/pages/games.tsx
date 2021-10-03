@@ -1,9 +1,9 @@
 import { initializeApollo } from 'utils/apollo';
+import { QUERY_GAMES } from 'graphql/queries/games';
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames';
 
 import GamesTemplate, { GamesTemplateProps } from 'templates/Games';
-
 import filterItemsMock from 'components/ExploreSidebar/mock';
-import { QUERY_GAMES } from 'graphql/queries/games';
 
 const Games = (props: GamesTemplateProps) => {
   return <GamesTemplate {...props} />;
@@ -14,7 +14,7 @@ export default Games;
 export const getServerSideProps = async () => {
   const apolloClient = initializeApollo();
 
-  const { data } = await apolloClient.query({
+  const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
       limit: 9,
