@@ -59,7 +59,7 @@ describe('<Highlight />', () => {
 
   it('should render the align left', () => {
     const { container } = renderWithTheme(
-      <Highlight alignment="left" {...props} />,
+      <Highlight alignmente="left" {...props} />,
     );
 
     expect(container.firstChild).toHaveStyleRule(

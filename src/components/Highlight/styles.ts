@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import { HighlightProps } from '.';
 
-type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignment'>;
+type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignmente'>;
 
 const wrapperModifiers = {
   right: () => css`
@@ -28,7 +28,7 @@ const wrapperModifiers = {
 };
 
 export const Wrapper = styled.section<WrapperProps>`
-  ${({ backgroundImage, alignment }) => css`
+  ${({ backgroundImage, alignmente }) => css`
     display: grid;
     grid-template-areas: 'floatimage content';
 
@@ -50,7 +50,7 @@ export const Wrapper = styled.section<WrapperProps>`
       height: 32rem;
     `}
 
-    ${wrapperModifiers[alignment!]()}
+    ${wrapperModifiers[alignmente!]()}
   `}
 `;
 
