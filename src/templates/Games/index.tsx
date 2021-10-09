@@ -2,7 +2,7 @@ import Base from 'templates/Base';
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
 
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
-import GameCard, { GameCardProps } from 'components/GameCard';
+import GameCard from 'components/GameCard';
 import Grid from 'components/Grid';
 
 import * as S from './styles';
@@ -12,13 +12,12 @@ import { useQueryGames } from 'graphql/queries/games';
 import Loader from 'components/Loader';
 
 export type GamesTemplateProps = {
-  games?: GameCardProps[];
   filterItems: ItemProps[];
 };
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { data, loading, fetchMore } = useQueryGames({
-    variables: { limit: 15 },
+    variables: { limit: 9 },
   });
 
   const handleFilter = () => {
