@@ -23,7 +23,7 @@ jest.mock('components/ExploreSidebar', () => ({
 }));
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
+  it('should render loading when starting the template', async () => {
     renderWithTheme(
       <MockedProvider mocks={[]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
@@ -33,6 +33,10 @@ describe('<Games />', () => {
     expect(screen.getByTestId('Mock Base')).toBeInTheDocument();
     expect(screen.getByTestId('Mock ExploreSidebar')).toBeInTheDocument();
     expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+
+    expect(
+      await screen.findByRole('button', { name: /show more/i }),
+    ).toBeInTheDocument();
   });
 
   it('should render sections', async () => {
