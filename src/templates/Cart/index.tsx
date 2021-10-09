@@ -14,12 +14,14 @@ import { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
 
 export type CartProps = {
+  recommendedTitle?: string;
   recommendedGames: GameCardProps[];
   recommendedHighlight: HighlightProps;
 } & CartListProps &
   Pick<PaymentOptionsProps, 'cards'>;
 
 const CartTemplate = ({
+  recommendedTitle,
   recommendedGames,
   recommendedHighlight,
   items,
@@ -53,7 +55,7 @@ const CartTemplate = ({
       </Container>
 
       <Showcase
-        title="You may like these games"
+        title={recommendedTitle}
         highlight={recommendedHighlight}
         games={recommendedGames}
       />
