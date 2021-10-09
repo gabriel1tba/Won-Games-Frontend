@@ -4,7 +4,6 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
-
 import { useMemo } from 'react';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
@@ -29,7 +28,6 @@ export function initializeApollo(initialState = {}) {
 
   // sempre inicializando no SSR com cache limpo
   if (typeof window === 'undefined') return apolloClientGlobal;
-
   // cria o apolloClient se estiver no client side
   apolloClient = apolloClient ?? apolloClientGlobal;
 
