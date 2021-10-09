@@ -1,12 +1,14 @@
 import Home, { HomeTemplateProps } from 'templates/Home';
-import highlightMock from 'components/Highlight/mock';
 import { initializeApollo } from 'utils/apollo';
 import { QueryHome } from 'graphql/generated/QueryHome';
 import { QUERY_HOME } from 'graphql/queries/home';
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers';
 
-export default function Index(props: HomeTemplateProps) {
+const Index = (props: HomeTemplateProps) => {
   return <Home {...props} />;
-}
+};
+
+export default Index;
 
 // ATENÇÃO:
 // os métodos getStaticProps/getServerSideProps SÓ FUNCIONAM EM PAGES
@@ -14,63 +16,30 @@ export default function Index(props: HomeTemplateProps) {
 // getStaticProps => gerar estático em build time (gatsby)
 // getServerSideProps => gerar via ssr a cada request (nunca vai para o bundle do client)
 // getInitialProps => gerar via ssr a cada request (vai para o client, faz hydrate do lado do client depois do 1 req)
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   const {
     data: { banners, newGames, upcomingGames, freeGames, sections },
-  } = await apolloClient.query<QueryHome>({ query: QUERY_HOME });
+  } = await apolloClient.query<QueryHome>({
+    query: QUERY_HOME,
+  });
 
   return {
     props: {
-      revalidate: 10,
-      banners: banners.map((banner) => ({
-        img: `http://localhost:1337${banner.image?.url}`,
-        title: banner.title,
-        subtitle: banner.subtitle,
-        buttonLabel: banner.button?.label,
-        buttonLink: banner.button?.link,
-        ...(banner.ribbon && {
-          ribbon: banner.ribbon.text,
-          ribbonColor: banner.ribbon.color,
-          ribbonSize: banner.ribbon.size,
-        }),
-      })),
+      revalidate: 60 * 5,
+      banners: bannerMapper(banners),
       newGamesTitle: sections?.newGames?.title,
-      newGames: newGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      newGames: gamesMapper(newGames),
       mostPopularGamesTitle: sections?.popularGames?.title,
-      mostPopularHighlight: highlightMock,
-      mostPopularGames: sections!.popularGames!.games.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      mostPopularHighlight: highlightMapper(sections?.popularGames?.highlight),
+      mostPopularGames: gamesMapper(sections!.popularGames!.games),
       upcomingGamesTitle: sections?.upcomingGames?.title,
-      upcomingGames: upcomingGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
-      upcomingHighlight: highlightMock,
+      upcomingGames: gamesMapper(upcomingGames),
+      upcomingHighlight: highlightMapper(sections?.upcomingGames?.highlight),
       freeGamesTitle: sections?.freeGames?.title,
-      freeGames: freeGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
-      freeHighlight: highlightMock,
+      freeGames: gamesMapper(freeGames),
+      freeHighlight: highlightMapper(sections?.freeGames?.highlight),
     },
   };
-}
+};
