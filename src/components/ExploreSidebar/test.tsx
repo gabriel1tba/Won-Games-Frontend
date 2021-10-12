@@ -12,10 +12,10 @@ describe('<ExploreSidebar />', () => {
   it('should render headings', () => {
     renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />);
 
+    expect(screen.getByRole('heading', { name: /price/i })).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: /sort by/i }),
     ).toBeInTheDocument();
-
     expect(
       screen.getByRole('heading', { name: /platforms/i }),
     ).toBeInTheDocument();
@@ -80,6 +80,7 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(screen.getByLabelText(/linux/i));
     userEvent.click(screen.getByLabelText(/low to high/i));
 
+    // 1st render (initialValues) + 3 clicks
     expect(onFilter).toHaveBeenCalledTimes(4);
 
     expect(onFilter).toBeCalledWith({

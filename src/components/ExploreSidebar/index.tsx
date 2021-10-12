@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import xor from 'lodash.xor';
 import { Close } from '@styled-icons/material-outlined/Close';
 import { FilterList } from '@styled-icons/material-outlined/FilterList';
-import xor from 'lodash.xor';
 
 import Heading from 'components/Heading';
 import Button from 'components/Button';
@@ -9,7 +9,6 @@ import Checkbox from 'components/Checkbox';
 import Radio from 'components/Radio';
 
 import * as S from './styles';
-
 import { ParsedUrlQueryInput } from 'querystring';
 
 export type ItemProps = {
@@ -40,6 +39,13 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    onFilter(values);
+    // this method comes from another template
+    // that we don't have access
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
   const handleRadio = (name: string, value: string | boolean) => {
     setValues((s) => ({ ...s, [name]: value }));
   };
@@ -52,11 +58,6 @@ const ExploreSidebar = ({
   const handleFilterMenu = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    onFilter(values);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
 
   return (
     <S.Wrapper isOpen={isOpen}>

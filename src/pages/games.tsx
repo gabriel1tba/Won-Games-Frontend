@@ -13,7 +13,9 @@ const Games = (props: GamesTemplateProps) => {
 
 export default Games;
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+export const getServerSideProps = async ({
+  query,
+}: GetServerSidePropsContext) => {
   const apolloClient = initializeApollo();
 
   const filterPrice = {
@@ -81,7 +83,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
-      limit: 15,
+      limit: 9,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
       sort: query.sort as string | null,
     },
@@ -94,4 +96,4 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
       filterItems,
     },
   };
-}
+};
