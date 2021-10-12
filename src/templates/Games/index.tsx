@@ -1,26 +1,42 @@
 import Base from 'templates/Base';
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
+import { ParsedUrlQueryInput } from 'querystring';
+import { useRouter } from 'next/router';
 
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
 import GameCard from 'components/GameCard';
 import Grid from 'components/Grid';
+import Loader from 'components/Loader';
 
 import * as S from './styles';
 
 import { useQueryGames } from 'graphql/queries/games';
 
-import Loader from 'components/Loader';
+import {
+  parseQueryStringToFilter,
+  parseQueryStringToWhere,
+} from 'utils/filter';
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[];
 };
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+  const { push, query } = useRouter();
+
   const { data, loading, fetchMore } = useQueryGames({
-    variables: { limit: 9 },
+    variables: {
+      limit: 15,
+      where: parseQueryStringToWhere({ queryString: query, filterItems }),
+      sort: query.sort as string | null,
+    },
   });
 
-  const handleFilter = () => {
+  const handleFilter = (items: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: items,
+    });
     return;
   };
 
@@ -31,7 +47,14 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   return (
     <Base>
       <S.Main>
-        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
+        <ExploreSidebar
+          initialValues={parseQueryStringToFilter({
+            queryString: query,
+            filterItems,
+          })}
+          items={filterItems}
+          onFilter={handleFilter}
+        />
 
         {loading ? (
           <div style={{ marginLeft: '30%' }}>
