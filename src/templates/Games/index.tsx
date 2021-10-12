@@ -13,9 +13,9 @@ import Grid from 'components/Grid';
 
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
 import GameCard from 'components/GameCard';
-import Empty from 'components/Empty';
 
 import * as S from './styles';
+import Empty from 'components/Empty';
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[];

@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
+import renderWithTheme from 'utils/tests/helpers';
 
 import filterItemsMock from 'components/ExploreSidebar/mock';
 import { fetchMoreMock, gamesMock, noGamesMock } from './mock';
@@ -7,7 +8,6 @@ import { fetchMoreMock, gamesMock, noGamesMock } from './mock';
 import Games from '.';
 import userEvent from '@testing-library/user-event';
 import apolloCache from 'utils/apolloCache';
-import renderWithTheme from 'utils/tests/helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
