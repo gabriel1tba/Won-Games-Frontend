@@ -55,6 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   >({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug: `${params?.slug}` },
+    fetchPolicy: 'no-cache',
   });
 
   if (!data.games.length) {

@@ -25,6 +25,7 @@ export const getStaticProps = async () => {
   } = await apolloClient.query<QueryHome, QueryHomeVariables>({
     query: QUERY_HOME,
     variables: { date: TODAY }, // 2021-10-08
+    fetchPolicy: 'no-cache', //
   });
 
   return {
