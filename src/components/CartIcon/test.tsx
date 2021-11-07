@@ -2,6 +2,17 @@ import { render, screen } from 'utils/test-utils';
 
 import CartIcon from '.';
 
+const CartContextDefaultValues = {
+  items: [],
+  quantity: 0,
+  total: '$0.00',
+  isInCart: () => false,
+  addToCart: () => null,
+  removeFromCart: () => null,
+  clearCart: () => null,
+  loading: false,
+};
+
 describe('<CartIcon />', () => {
   it('should render without badge', () => {
     render(<CartIcon />);
@@ -11,16 +22,11 @@ describe('<CartIcon />', () => {
   });
 
   it('should render with badge', () => {
-    render(<CartIcon quantity={3} />);
+    render(<CartIcon />, {
+      cartProviderProps: { ...CartContextDefaultValues, quantity: 3 },
+    });
 
     expect(screen.getByLabelText(/cart items/i)).toBeInTheDocument();
     expect(screen.getByText(/3/)).toBeInTheDocument();
-  });
-
-  it('should render with badge only if has positive numbers', () => {
-    render(<CartIcon quantity={-1} />);
-
-    expect(screen.queryByLabelText(/cart items/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/-1/)).not.toBeInTheDocument();
   });
 });
