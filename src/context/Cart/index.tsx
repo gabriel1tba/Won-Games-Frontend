@@ -23,6 +23,17 @@ export type CartContextProps = {
   loading: boolean;
 };
 
+export const CartContextMockValues = {
+  items: [],
+  quantity: 0,
+  total: '$0.00',
+  isInCart: () => false,
+  addToCart: () => null,
+  removeFromCart: () => null,
+  clearCart: () => null,
+  loading: false,
+};
+
 const CartContext = createContext({} as CartContextProps);
 
 export type CartProviderProps = {

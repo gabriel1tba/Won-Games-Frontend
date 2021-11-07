@@ -2,16 +2,7 @@ import { render, screen } from 'utils/test-utils';
 
 import CartIcon from '.';
 
-const CartContextDefaultValues = {
-  items: [],
-  quantity: 0,
-  total: '$0.00',
-  isInCart: () => false,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  clearCart: () => null,
-  loading: false,
-};
+import { CartContextMockValues } from 'context/Cart';
 
 describe('<CartIcon />', () => {
   it('should render without badge', () => {
@@ -23,7 +14,7 @@ describe('<CartIcon />', () => {
 
   it('should render with badge', () => {
     render(<CartIcon />, {
-      cartProviderProps: { ...CartContextDefaultValues, quantity: 3 },
+      cartProviderProps: { ...CartContextMockValues, quantity: 3 },
     });
 
     expect(screen.getByLabelText(/cart items/i)).toBeInTheDocument();

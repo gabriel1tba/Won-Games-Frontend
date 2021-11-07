@@ -1,24 +1,15 @@
 import { render, screen } from 'utils/test-utils';
 
-import items from 'components/CartList/mock';
-
 import CartDropdown from '.';
 
-const CartContextDefaultValues = {
-  items: [],
-  quantity: 0,
-  total: '$0.00',
-  isInCart: () => false,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  clearCart: () => null,
-  loading: false,
-};
+import { CartContextMockValues } from 'context/Cart';
+
+import items from 'components/CartList/mock';
 
 describe('<CartDropdown />', () => {
   beforeEach(() => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       items,
       quantity: items.length,
       total: 'R$ 300,00',

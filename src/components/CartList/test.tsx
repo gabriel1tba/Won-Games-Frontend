@@ -1,23 +1,14 @@
 import { render, screen } from 'utils/test-utils';
 
 import CartList from '.';
-import items from './mock';
 
-const CartContextDefaultValues = {
-  items: [],
-  quantity: 0,
-  total: '$0.00',
-  isInCart: () => false,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  clearCart: () => null,
-  loading: false,
-};
+import items from './mock';
+import { CartContextMockValues } from 'context/Cart';
 
 describe('<CartList />', () => {
   it('should render the cart list', () => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       items,
       total: 'R$ 330,00',
     };
@@ -32,7 +23,7 @@ describe('<CartList />', () => {
 
   it('should render the button', () => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       items,
     };
 
@@ -43,7 +34,7 @@ describe('<CartList />', () => {
 
   it('should render empty if there are no games', () => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       items: [],
     };
     render(<CartList />, { cartProviderProps });

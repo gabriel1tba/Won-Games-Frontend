@@ -1,22 +1,13 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen } from 'utils/test-utils';
 
-const CartContextDefaultValues = {
-  items: [],
-  quantity: 0,
-  total: '$0.00',
-  isInCart: () => false,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  clearCart: () => null,
-  loading: false,
-};
+import { CartContextMockValues } from 'context/Cart';
 
 import CartButton from '.';
 describe('<CartButton />', () => {
   it('should render button to add and call the method if clicked', () => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       isInCart: () => false,
       addToCart: jest.fn(),
     };
@@ -32,7 +23,7 @@ describe('<CartButton />', () => {
 
   it('should render button to remove and call the method if clicked', () => {
     const cartProviderProps = {
-      ...CartContextDefaultValues,
+      ...CartContextMockValues,
       isInCart: () => true,
       removeFromCart: jest.fn(),
     };
