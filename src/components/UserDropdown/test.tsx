@@ -1,18 +1,18 @@
-import { screen } from '@testing-library/react';
-import renderWithTheme from 'utils/tests/helpers';
+import { render, screen } from 'utils/test-utils';
+
 import userEvent from '@testing-library/user-event';
 
 import UserDropdown from '.';
 
 describe('<UserDropdown />', () => {
   it('should render the username', () => {
-    renderWithTheme(<UserDropdown username="Gabriel" />);
+    render(<UserDropdown username="Gabriel" />);
 
     expect(screen.getByText(/gabriel/i)).toBeInTheDocument();
   });
 
   it('should render the menu', () => {
-    renderWithTheme(<UserDropdown username="Willian" />);
+    render(<UserDropdown username="Willian" />);
 
     // open menu
     userEvent.click(screen.getByText(/willian/i));

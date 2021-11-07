@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import renderWithTheme from 'utils/tests/helpers';
+import { render, screen } from 'utils/test-utils';
 
 import Loader from '.';
 
 describe('<Loader />', () => {
   it('Should render correctly', () => {
-    renderWithTheme(<Loader />);
+    render(<Loader />);
 
     expect(screen.getByTitle(/loading/i)).toBeInTheDocument();
   });
