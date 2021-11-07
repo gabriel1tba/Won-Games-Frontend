@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Button from 'components/Button';
 import GameItem from 'components/GameItem';
 
-import { useCart } from 'hooks/intex';
+import { useCart } from 'hooks';
 
 import * as S from './styles';
 import Empty from 'components/Empty';

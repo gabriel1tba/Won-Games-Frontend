@@ -2,7 +2,7 @@ import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart';
 
 import * as S from './styles';
 
-import { useCart } from 'hooks/intex';
+import { useCart } from 'hooks';
 
 const CartIcon = () => {
   const { quantity } = useCart();
