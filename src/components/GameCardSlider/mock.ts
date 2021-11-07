@@ -1,5 +1,6 @@
 const items = [
   {
+    id: '1',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -8,6 +9,7 @@ const items = [
     promotionalPrice: 215,
   },
   {
+    id: '2',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -16,6 +18,7 @@ const items = [
     promotionalPrice: 215,
   },
   {
+    id: '3',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -24,6 +27,7 @@ const items = [
     promotionalPrice: 215,
   },
   {
+    id: '4',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -32,6 +36,7 @@ const items = [
     promotionalPrice: 215,
   },
   {
+    id: '5',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -40,6 +45,7 @@ const items = [
     promotionalPrice: 215,
   },
   {
+    id: '6',
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',

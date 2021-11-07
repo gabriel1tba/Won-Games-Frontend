@@ -37,7 +37,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 
   const { games, gamesConnection } = data;
 
-  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
+  const hasMoreGames = games?.length < (gamesConnection?.values?.length || 0);
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
@@ -64,11 +64,12 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
         />
 
         <section>
-          {data?.games.length ? (
+          {data?.games?.length ? (
             <>
               <Grid>
                 {data?.games.map((game) => (
                   <GameCard
+                    id={game.id}
                     key={game.slug}
                     title={game.name}
                     slug={game.slug}
