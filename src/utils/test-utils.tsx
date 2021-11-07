@@ -3,7 +3,11 @@ import { render, RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
 import theme from 'styles/theme';
-import { CartContext, CartContextProps } from 'context/Cart';
+import {
+  CartContext,
+  CartContextProps,
+  CartContextMockValues,
+} from 'context/Cart';
 
 type CustomRenderProps = {
   cartProviderProps?: CartContextProps;
@@ -12,7 +16,7 @@ type CustomRenderProps = {
 const customRender = (
   ui: ReactElement,
   {
-    cartProviderProps = {} as CartContextProps,
+    cartProviderProps = CartContextMockValues,
     ...renderOptions
   }: CustomRenderProps = {},
 ) =>

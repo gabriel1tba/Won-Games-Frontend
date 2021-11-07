@@ -4,6 +4,7 @@ import theme from 'styles/theme';
 import GameCard from '.';
 
 const props = {
+  id: '1',
   slug: 'population-zero',
   title: 'Population Zero',
   developer: 'Rockstar Games',
@@ -12,33 +13,30 @@ const props = {
 };
 
 describe('<GameCard />', () => {
-  it('should render the correctly', () => {
-    // renderizar o GameCard
-    render(<GameCard {...props} />);
+  it('should render correctly', () => {
+    const { container } = render(<GameCard {...props} />);
 
-    // Verificar se o title foi renderizado
     expect(
       screen.getByRole('heading', { name: props.title }),
     ).toBeInTheDocument();
 
-    // Verificar se o developer foi renderizado
     expect(
       screen.getByRole('heading', { name: props.developer }),
     ).toBeInTheDocument();
+
+    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+      'src',
+      props.img,
+    );
 
     expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
       'href',
       `/game/${props.slug}`,
     );
 
-    // Verificar se o img foi renderizado
-    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
-      'src',
-      props.img,
-    );
-
-    // Verificar se o botão de compra foi renderizado
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render price in label', () => {
@@ -47,7 +45,6 @@ describe('<GameCard />', () => {
     const price = screen.getByText('$235.00');
 
     expect(price).not.toHaveStyle({ textDecoration: 'line-through' });
-
     expect(price).toHaveStyle({ backgroundColor: theme.colors.secondary });
   });
 
@@ -83,14 +80,13 @@ describe('<GameCard />', () => {
       <GameCard
         {...props}
         ribbon="My Ribbon"
-        ribbonColor="primary"
+        ribbonColor="secondary"
         ribbonSize="small"
       />,
     );
+    const ribbon = screen.getByText(/my ribbon/i);
 
-    const ribbon = screen.getByText(/My Ribbon/i);
-
-    expect(ribbon).toHaveStyle({ backgroundColor: 'F231A5' });
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' });
     expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' });
     expect(ribbon).toBeInTheDocument();
   });
