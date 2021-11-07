@@ -1,61 +1,15 @@
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useContext } from 'react';
 
-import { useQueryGames } from 'graphql/queries/games';
+import { CartContext, CartContextProps } from 'context/Cart';
 
-import { getStorageItem } from 'utils/localStorage';
+const useCart = (): CartContextProps => {
+  const context = useContext(CartContext);
 
-import { cartMapper } from 'utils/mappers';
+  if (!context) {
+    throw new Error('useCart depends on CartProvider');
+  }
 
-type CartItem = {
-  id: string;
-  img: string;
-  title: string;
-  price: string;
+  return context;
 };
 
-export type CartContextData = {
-  items: CartItem[];
-};
-
-export const CartContext = createContext({} as CartContextData);
-
-export type CartProviderProps = {
-  children: React.ReactNode;
-};
-
-const CART_KEY = 'cartItems';
-
-const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    const data = getStorageItem(CART_KEY);
-
-    if (data) {
-      setCartItems(data);
-    }
-  }, []);
-
-  const { data } = useQueryGames({
-    skip: !cartItems?.length,
-    variables: {
-      where: {
-        id: cartItems,
-      },
-    },
-  });
-
-  return (
-    <CartContext.Provider
-      value={{
-        items: cartMapper(data?.games),
-      }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
-};
-
-const useCart = () => useContext(CartContext);
-
-export { CartProvider, useCart };
+export default useCart;

@@ -3,7 +3,10 @@ import { renderHook } from '@testing-library/react-hooks';
 import { MockedProvider } from '@apollo/client/testing';
 import { setStorageItem } from 'utils/localStorage';
 
-import { useCart, CartProvider, CartProviderProps } from '.';
+import { CartProvider, CartProviderProps } from 'context/Cart';
+
+import useCart from '.';
+
 import { cartItems, gamesMock } from './mock';
 
 describe('useCart', () => {
@@ -23,5 +26,19 @@ describe('useCart', () => {
     await waitForNextUpdate();
 
     expect(result.current.items).toStrictEqual(cartItems);
+  });
+
+  it('should display an error when not passing the provider', () => {
+    const wrapper = ({ children }: CartProviderProps) => (
+      <MockedProvider mocks={[gamesMock]}>{children}</MockedProvider>
+    );
+
+    setStorageItem('cartItems', ['1', '2']);
+
+    const { result } = renderHook(() => useCart(), {
+      wrapper,
+    });
+
+    expect(result.error).toStrictEqual(undefined);
   });
 });
