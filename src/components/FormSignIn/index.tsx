@@ -14,11 +14,13 @@ import * as S from './styles';
 import { FieldErrors, signInValidate } from 'utils/validations';
 
 const FormSignIn = () => {
-  const { push } = useRouter();
+  const routes = useRouter();
   const [formError, setFormError] = useState('');
   const [fieldError, setFieldError] = useState<FieldErrors>({});
   const [values, setValues] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+
+  const { push, query } = routes;
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }));
@@ -42,7 +44,7 @@ const FormSignIn = () => {
     const result = await signIn('credentials', {
       ...values,
       redirect: false,
-      callbackUrl: '/',
+      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`,
     });
 
     if (result?.url) {
