@@ -8,12 +8,17 @@
 
 - **typescript**
 - **nextjs**
+- **next-pwa**
+- **next-auth**
 - **storybook**
-- **jest**
-- **react-testing-library**
-- **husky + lint-staged**
-- **plop**
+- **jest/react-testing-library**
 - **styled-components**
+- **styled-icons**
+- **styled-media-query**
+- **nextjs-progressbar**
+- **apollo**
+- **graphql**
+- **joi**
 
 &nbsp;
 
