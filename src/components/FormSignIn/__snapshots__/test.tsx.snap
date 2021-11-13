@@ -224,6 +224,7 @@ exports[`<FormSignIn /> should render the heading 1`] = `
         </a>
         <button
           class="c7 c8"
+          type="submit"
         >
           <span>
             Sign in now

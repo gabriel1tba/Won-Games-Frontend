@@ -3,21 +3,21 @@ import Providers from 'next-auth/providers';
 import { NextApiRequest, NextApiResponse } from 'next-auth/internals/utils';
 import { JWT } from 'next-auth/jwt';
 
+type Authorize = {
+  email: string;
+  password: string;
+};
+
 const options = {
   pages: {
     signIn: '/sign-in',
   },
+
   providers: [
     Providers.Credentials({
       name: 'Sign-in',
       credentials: {},
-      async authorize({
-        email,
-        password,
-      }: {
-        email: string;
-        password: string;
-      }) {
+      async authorize({ email, password }: Authorize) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
           {
