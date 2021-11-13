@@ -43,6 +43,10 @@ exports[`<FormSignIn /> should render the heading 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #EAEAEA;
   border-radius: 0.2rem;
   padding: 0 1.6rem;
@@ -52,22 +56,6 @@ exports[`<FormSignIn /> should render the heading 1`] = `
 
 .c2:focus-within {
   box-shadow: 0 0 0.5rem #F231A5;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 2.2rem;
-  color: #8F8F8F;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-}
-
-.c3 > svg {
-  width: 100%;
 }
 
 .c5 {
@@ -80,6 +68,28 @@ exports[`<FormSignIn /> should render the heading 1`] = `
   border: 0;
   outline: none;
   width: 100%;
+}
+
+.c5:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  -webkit-filter: none;
+  filter: none;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #8F8F8F;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.c3 > svg {
+  width: 2.2rem;
+  height: 100%;
 }
 
 .c0 .c1 {
