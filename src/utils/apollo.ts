@@ -6,7 +6,7 @@ import apolloCache from './apolloCache';
 
 let apolloClient: ApolloClient<NormalizedCacheObject | null>;
 
-function createApolloClient(session?: Session | null) {
+const createApolloClient = (session?: Session | null) => {
   const httpLink = new HttpLink({
     uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
   });
@@ -21,12 +21,12 @@ function createApolloClient(session?: Session | null) {
     link: authLink.concat(httpLink),
     cache: apolloCache,
   });
-}
+};
 
-export function initializeApollo(
+export const initializeApollo = (
   initialState = null,
   session?: Session | null,
-) {
+) => {
   // serve para verificar se já existe uma instância, para não criar outra
   const apolloClientGlobal = apolloClient ?? createApolloClient(session);
 
@@ -42,12 +42,12 @@ export function initializeApollo(
   apolloClient = apolloClient ?? apolloClientGlobal;
 
   return apolloClient;
-}
+};
 
-export function useApollo(initialState = null, session?: Session) {
+export const useApollo = (initialState = null, session?: Session) => {
   const store = useMemo(
     () => initializeApollo(initialState, session),
     [initialState, session],
   );
   return store;
-}
+};

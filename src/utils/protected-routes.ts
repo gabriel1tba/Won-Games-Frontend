@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/client';
 
-async function protectedRoutes(context: GetServerSidePropsContext) {
+const protectedRoutes = async (context: GetServerSidePropsContext) => {
   const session = await getSession(context);
 
   if (!session) {
@@ -12,6 +12,6 @@ async function protectedRoutes(context: GetServerSidePropsContext) {
   }
 
   return session;
-}
+};
 
 export default protectedRoutes;

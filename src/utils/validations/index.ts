@@ -17,7 +17,7 @@ export type FieldErrors = {
   [key: string]: string;
 };
 
-function getFieldErrors(objError: Joi.ValidationResult) {
+const getFieldErrors = (objError: Joi.ValidationResult) => {
   const errors: FieldErrors = {};
 
   if (objError.error) {
@@ -27,18 +27,19 @@ function getFieldErrors(objError: Joi.ValidationResult) {
   }
 
   return errors;
-}
+};
 
-export function signUpValidate(values: UsersPermissionsRegisterInput) {
+export const signUpValidate = (values: UsersPermissionsRegisterInput) => {
   const schema = Joi.object(fieldsValidations);
 
   return getFieldErrors(schema.validate(values, { abortEarly: false }));
-}
+};
 
 type SignInValues = Omit<UsersPermissionsRegisterInput, 'username'>;
-export function signInValidate(values: SignInValues) {
+
+export const signInValidate = (values: SignInValues) => {
   const { email, password } = fieldsValidations;
   const schema = Joi.object({ email, password });
 
   return getFieldErrors(schema.validate(values, { abortEarly: false }));
-}
+};
