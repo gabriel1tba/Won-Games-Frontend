@@ -218,7 +218,7 @@ exports[`<FormSignIn /> should render the heading 1`] = `
         </div>
         <a
           class="c6"
-          href="#"
+          href="/forgot-password"
         >
           Forgot your password?
         </a>
