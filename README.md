@@ -8,7 +8,7 @@
 
 Front-end do E-commerce Won Games, feito em Next, onde usuários podem se cadastrar e comprar jogos, montar suas wishlist e mais.
 
-![alt text](https://i.imgur.com/mwYHB6U.gif)
+![alt text](https://i.imgur.com/QZD5iNt.gif)
 
 ## 💻 Tecnologias utilizadas
 
