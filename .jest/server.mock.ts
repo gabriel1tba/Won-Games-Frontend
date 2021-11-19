@@ -7,7 +7,7 @@ beforeAll(() => {
 
 afterEach(() => {
   // reseta todos os handlers para caso eles sejam chamados
-  // novament
+  // novamente
   server.resetHandlers();
 });
 
