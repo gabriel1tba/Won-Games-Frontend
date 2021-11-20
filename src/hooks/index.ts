@@ -1,3 +1,4 @@
 import useCart from './useCart';
+import useWishlist from './useWishlist';
 
-export { useCart };
+export { useCart, useWishlist };
