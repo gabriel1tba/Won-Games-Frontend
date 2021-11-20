@@ -9,7 +9,7 @@ beforeAll(() => {
 
 afterEach(() => {
   // reseta todos os handlers para caso eles sejam chamados
-  // novamente
+  // novament
   server.resetHandlers();
 });
 
