@@ -34,10 +34,12 @@ describe('useWishlist', () => {
     // wait until get the data
     await waitForNextUpdate();
 
-    expect(result.current.items).toStrictEqual([
-      wishlistItems[0],
-      wishlistItems[1],
-    ]);
+    await waitFor(() => {
+      expect(result.current.items).toStrictEqual([
+        wishlistItems[0],
+        wishlistItems[1],
+      ]);
+    });
   });
 
   it('should check if the game is in the wishlist', async () => {

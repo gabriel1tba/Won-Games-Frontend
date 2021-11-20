@@ -76,9 +76,8 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
     [wishlistItems],
   );
 
-  const isInWishlist = (id: string) => {
-    return !!wishlistItems.find((game) => game.id === id);
-  };
+  const isInWishlist = (id: string) =>
+    !!wishlistItems.find((game) => game.id === id);
 
   const addToWishlist = (id: string) => {
     // se não existir wishlist - cria
@@ -102,6 +101,7 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
   const removeFromWishlist = (id: string) => ({});
 
   useEffect(() => {
+    setWishlistItems(data?.wishlists[0]?.games || []);
     setWishlistId(data?.wishlists[0]?.id);
   }, [data]);
 
