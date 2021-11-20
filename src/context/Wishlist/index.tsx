@@ -19,7 +19,7 @@ export type WishlistContextProps = {
   loading: boolean;
 };
 
-export const WishlistContextDefaultValues = {
+export const WishlistContextMock = {
   items: [],
   isInWishlist: () => false,
   addToWishlist: () => null,
@@ -27,9 +27,8 @@ export const WishlistContextDefaultValues = {
   loading: false,
 };
 
-const WishlistContext = createContext<WishlistContextProps>(
-  WishlistContextDefaultValues,
-);
+const WishlistContext =
+  createContext<WishlistContextProps>(WishlistContextMock);
 
 export type WishlistProviderProps = {
   children: React.ReactNode;

@@ -9,21 +9,31 @@ import {
   CartContextMockValues,
 } from 'context/Cart';
 
+import {
+  WishlistContext,
+  WishlistContextProps,
+  WishlistContextMock,
+} from 'context/Wishlist';
+
 type CustomRenderProps = {
   cartProviderProps?: CartContextProps;
+  wishlistProviderProps?: WishlistContextProps;
 } & Omit<RenderOptions, 'queries'>;
 
 const customRender = (
   ui: ReactElement,
   {
     cartProviderProps = CartContextMockValues,
+    wishlistProviderProps = WishlistContextMock,
     ...renderOptions
   }: CustomRenderProps = {},
 ) =>
   render(
     <ThemeProvider theme={theme}>
       <CartContext.Provider value={cartProviderProps}>
-        {ui}
+        <WishlistContext.Provider value={wishlistProviderProps}>
+          {ui}
+        </WishlistContext.Provider>
       </CartContext.Provider>
     </ThemeProvider>,
     renderOptions,
