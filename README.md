@@ -10,6 +10,8 @@ Front-end do E-commerce Won Games, feito em Next, onde usuários podem se cadast
 
 ![alt text](https://i.imgur.com/QZD5iNt.gif)
 
+PS: Clique [aqui](https://github.com/gabrielitba/Won-Games-Api) para acessar o repositório com a API do projeto
+
 ## 💻 Tecnologias utilizadas
 
 - **typescript**
