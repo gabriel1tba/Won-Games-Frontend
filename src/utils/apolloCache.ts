@@ -8,5 +8,14 @@ export default new InMemoryCache({
         games: concatPagination(['where', 'sort']),
       },
     },
+    Wishlist: {
+      fields: {
+        games: {
+          merge(_, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
   },
 });
