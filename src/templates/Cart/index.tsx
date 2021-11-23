@@ -1,3 +1,5 @@
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { Info } from '@styled-icons/material-outlined/Info';
 
 import PaymentForm from 'components/PaymentForm';
@@ -20,6 +22,8 @@ export type CartProps = {
   recommendedHighlight: HighlightProps;
 } & CartListProps;
 
+const stripe = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`);
+
 const Cart = ({
   recommendedTitle,
   recommendedGames,
@@ -35,7 +39,9 @@ const Cart = ({
         <S.Content>
           <CartList />
 
-          <PaymentForm />
+          <Elements stripe={stripe}>
+            <PaymentForm />
+          </Elements>
         </S.Content>
 
         <S.Text>
