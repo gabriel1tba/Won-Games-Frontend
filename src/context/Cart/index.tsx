@@ -5,7 +5,7 @@ import { getStorageItem, setStorageItem } from 'utils/localStorage';
 import { cartMapper } from 'utils/mappers';
 import formatPrice from 'utils/format-price';
 
-type CartItem = {
+export type CartItem = {
   id: string;
   img: string;
   title: string;
