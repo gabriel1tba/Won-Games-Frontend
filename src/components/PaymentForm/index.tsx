@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined';
-import { session, useSession } from 'next-auth/client';
 import { Session } from 'next-auth';
 
 import * as S from './styles';
@@ -43,7 +42,6 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         // faço o fluxo de jogo gratuito
         if (data.freeGames) {
           setFreeGames(true);
-          console.log(data.freeGames);
           return;
         }
 
@@ -54,8 +52,8 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         } else {
           // senão o paymentIntent foi válido
           // setClientSecret
+          setFreeGames(false);
           setClientSecret(data.client_secret);
-          console.log(data.client_secret);
         }
       }
     }
@@ -69,17 +67,21 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         <Heading color="black" size="small" lineBottom>
           Payment
         </Heading>
-        <CardElement
-          options={{
-            hidePostalCode: true,
-            style: {
-              base: {
-                fontSize: '16px',
+        {freeGames ? (
+          <S.FreeGames>Only free games, click buy and enjoy!</S.FreeGames>
+        ) : (
+          <CardElement
+            options={{
+              hidePostalCode: true,
+              style: {
+                base: {
+                  fontSize: '16px',
+                },
               },
-            },
-          }}
-          onChange={handleChange}
-        />
+            }}
+            onChange={handleChange}
+          />
+        )}
 
         {error && (
           <S.Error>
@@ -95,7 +97,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         <Button
           fullWidth
           icon={<ShoppingCart />}
-          disabled={disabled || !!error}
+          disabled={!freeGames && (disabled || !!error)}
         >
           Buy now
         </Button>
