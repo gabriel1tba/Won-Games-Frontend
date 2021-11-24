@@ -36,6 +36,10 @@ export const getServerSideProps = async (
     },
   });
 
+  if (!session) {
+    return { props: {} };
+  }
+
   const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED,
   });
