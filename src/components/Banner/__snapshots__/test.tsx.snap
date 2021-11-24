@@ -140,7 +140,7 @@ exports[`<Banner /> should render the heading 1`] = `
     </h3>
     <a
       class="c5"
-      href="/game//games/defy-death"
+      href="/games/defy-death"
     >
       <span>
         Buy now

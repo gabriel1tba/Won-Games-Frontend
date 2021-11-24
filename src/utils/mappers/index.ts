@@ -13,7 +13,11 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
     title: banner.title,
     subtitle: banner.subtitle,
     buttonLabel: banner.button?.label,
-    buttonLink: banner.button?.link,
+    // buttonLink: banner.button?.link,
+    buttonLink: banner.button?.link.replace(
+      'localhost:1337/',
+      'localhost:3000/game/',
+    ),
     ...(banner.ribbon && {
       ribbon: banner.ribbon.text,
       ribbonColor: banner.ribbon.color,
