@@ -6,36 +6,38 @@ import * as S from './styles';
 const props = {
   title: 'Heading 1',
   subtitle: 'Heading 2',
+  backgroundImage: '/img/red-dead-img.jpg',
   buttonLabel: 'Buy now',
   buttonLink: '/rdr2',
-  backgroundImage: '/img/red-dead-img.jpg',
 };
 
 describe('<Highlight />', () => {
-  it('should render the heading', () => {
+  it('should render headings and button', () => {
+    const { container } = render(<Highlight {...props} />);
+
+    expect(
+      screen.getByRole('heading', { name: /heading 1/i }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', { name: /heading 2/i }),
+    ).toBeInTheDocument();
+
+    expect(screen.getByRole('link', { name: /buy now/i })).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render background image', () => {
     render(<Highlight {...props} />);
 
     expect(
-      screen.getByRole('heading', { name: /Heading 1/i }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', { name: /Heading 2/i }),
-    ).toBeInTheDocument();
-
-    expect(screen.getByRole('link', { name: /Buy now/i })).toBeInTheDocument();
+      screen.getByRole('img', { name: `${props.title} background` }),
+    ).toHaveAttribute('src', `${props.backgroundImage}`);
   });
 
-  it('should render the background image', () => {
-    const { container } = render(<Highlight {...props} />);
-
-    expect(container.firstChild).toHaveStyle({
-      backgroundImage: `url(${props.backgroundImage})`,
-    });
-  });
-
-  it('should render the float image', () => {
-    render(<Highlight floatImage="/float-image.png" {...props} />);
+  it('should render float image', () => {
+    render(<Highlight {...props} floatImage="/float-image.png" />);
 
     expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
       'src',
@@ -43,7 +45,7 @@ describe('<Highlight />', () => {
     );
   });
 
-  it('should render the align right by default', () => {
+  it('should render align right by default', () => {
     const { container } = render(<Highlight {...props} />);
 
     expect(container.firstChild).toHaveStyleRule(
@@ -56,8 +58,8 @@ describe('<Highlight />', () => {
     });
   });
 
-  it('should render the align left', () => {
-    const { container } = render(<Highlight alignmente="left" {...props} />);
+  it('should render align left by default', () => {
+    const { container } = render(<Highlight {...props} alignmente="left" />);
 
     expect(container.firstChild).toHaveStyleRule(
       'grid-template-areas',
