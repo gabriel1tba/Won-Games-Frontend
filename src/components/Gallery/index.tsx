@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { v4 } from 'uuid';
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos';
@@ -81,9 +82,11 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
+            width={295}
+            height={165}
             role="button"
-            key={v4()}
+            key={`thumb-${index}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
             onClick={() => {
@@ -106,7 +109,13 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Body>
           <Slider ref={slider} settings={modalSettings}>
             {items.map((item) => (
-              <img key={v4()} src={item.src} alt={item.label} />
+              <Image
+                width={1200}
+                height={675}
+                key={v4()}
+                src={item.src}
+                alt={item.label}
+              />
             ))}
           </Slider>
         </S.Body>
