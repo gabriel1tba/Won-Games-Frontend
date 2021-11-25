@@ -6,10 +6,11 @@ import { QueryWishlist_wishlists_games } from 'graphql/generated/QueryWishlist';
 import { QueryGames_games } from 'graphql/generated/QueryGames';
 import { QueryOrders_orders } from 'graphql/generated/QueryOrders';
 import formatPrice from '../format-price';
+import { getImageUrl } from 'utils/getImageUrl';
 
 export const bannerMapper = (banners: QueryHome_banners[]) => {
   return banners.map((banner) => ({
-    img: `http://localhost:1337${banner.image?.url}`,
+    img: `${getImageUrl(banner.image?.url)}`,
     title: banner.title,
     subtitle: banner.subtitle,
     buttonLabel: banner.button?.label,
@@ -39,7 +40,7 @@ export const gamesMapper = (
         title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${getImageUrl(game.cover?.url)}`,
         price: game.price,
       }))
     : [];
@@ -52,8 +53,8 @@ export const highlightMapper = (
     ? {
         title: highlight.title,
         subtitle: highlight.subtitle,
-        backgroundImage: `http://localhost:1337${highlight.background?.url}`,
-        floatImage: `http://localhost:1337${highlight.floatImage?.url}`,
+        backgroundImage: `${getImageUrl(highlight.background?.url)}`,
+        floatImage: `${getImageUrl(highlight.floatImage?.url)}`,
         buttonLabel: highlight.buttonLabel,
         buttonLink: highlight.buttonLink,
         alignment: highlight.alignmente,
@@ -65,7 +66,7 @@ export const cartMapper = (games: QueryGames_games[] | undefined) => {
   return games
     ? games.map((game) => ({
         id: game.id,
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${getImageUrl(game.cover?.url)}`,
         title: game.name,
         price: formatPrice(game.price),
       }))
@@ -94,7 +95,7 @@ export const ordersMapper = (orders: QueryOrders_orders[]) => {
             title: game.name,
             downloadLink:
               'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
-            img: `http://localhost:1337${game.cover?.url}`,
+            img: `${getImageUrl(game.cover?.url)}`,
             price: formatPrice(game.price),
           })),
         };
