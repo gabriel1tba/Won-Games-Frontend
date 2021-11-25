@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { initializeApollo } from 'utils/apollo';
 
@@ -10,19 +9,20 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables,
 } from 'graphql/generated/QueryGameBySlug';
+import { GetStaticProps } from 'next';
 import { QueryRecommended } from 'graphql/generated/QueryRecommended';
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended';
+import { gamesMapper, highlightMapper } from 'utils/mappers';
 import {
   QueryUpcoming,
   QueryUpcomingVariables,
 } from 'graphql/generated/QueryUpcoming';
 import { QUERY_UPCOMING } from 'graphql/queries/upcoming';
-import { gamesMapper, highlightMapper } from 'utils/mappers';
 import { getImageUrl } from 'utils/getImageUrl';
 
 const apolloClient = initializeApollo();
 
-const Index = (props: GameTemplateProps) => {
+export default function Index(props: GameTemplateProps) {
   const router = useRouter();
 
   // se a rota não tiver sido gerada ainda
@@ -31,11 +31,10 @@ const Index = (props: GameTemplateProps) => {
   if (router.isFallback) return null;
 
   return <Game {...props} />;
-};
-export default Index;
+}
 
 // gerar em build time (/game/bla, /bame/foo ...)
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: { limit: 9 },
@@ -46,7 +45,7 @@ export const getStaticPaths = async () => {
   }));
 
   return { paths, fallback: true };
-};
+}
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Get game data
@@ -65,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const game = data.games[0];
 
-  // Recommended games
+  // get recommended games
   const { data: recommended } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED,
   });
@@ -78,8 +77,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   >({ query: QUERY_UPCOMING, variables: { date: TODAY } });
 
   return {
-    revalidate: 60 * 5,
+    revalidate: 60,
     props: {
+      slug: params?.slug,
       cover: `${getImageUrl(game.cover?.src)}`,
       gameInfo: {
         id: game.id,
@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         description: game.short_description,
       },
       gallery: game.gallery.map((image) => ({
-        cover: `${getImageUrl(game.cover?.src)}`,
+        src: `${getImageUrl(image.src)}`,
         label: image.label,
       })),
       description: game.description,

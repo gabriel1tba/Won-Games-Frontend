@@ -1,22 +1,21 @@
-import Image from 'next/image';
+import { NextSeo } from 'next-seo';
+
+import Base from 'templates/Base';
 
 import GameInfo, { GameInfoProps } from 'components/GameInfo';
 import Gallery, { GalleryImageProps } from 'components/Gallery';
 import GameDetails, { GameDetailsProps } from 'components/GameDetails';
-import Divider from 'components/Divider';
-import Showcase from 'components/Showcase';
-
-import Base from 'templates/Base';
-
 import TextContent from 'components/TextContent';
-
-import * as S from './styles';
-
+import Showcase from 'components/Showcase';
+import Divider from 'components/Divider';
 import { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
 
+import * as S from './styles';
+import Image from 'next/image';
+
 export type GameTemplateProps = {
-  recommendedTitle?: string;
+  slug?: string;
   cover: string;
   gameInfo: GameInfoProps;
   gallery?: GalleryImageProps[];
@@ -25,12 +24,13 @@ export type GameTemplateProps = {
   upcomingTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighlightProps;
+  recommendedTitle: string;
   recommendedGames: GameCardProps[];
 };
 
 const Game = ({
+  slug,
   cover,
-  recommendedTitle,
   gameInfo,
   gallery,
   description,
@@ -38,9 +38,26 @@ const Game = ({
   upcomingTitle,
   upcomingGames,
   upcomingHighlight,
+  recommendedTitle,
   recommendedGames,
 }: GameTemplateProps) => (
   <Base>
+    <NextSeo
+      title={`${gameInfo.title} - Won Games`}
+      description={gameInfo.description}
+      canonical={`https://wongames.willianjusten.com.br/game/${slug}`}
+      openGraph={{
+        url: `https://wongames.willianjusten.com.br/game/${slug}`,
+        title: `${gameInfo.title} - Won Games`,
+        description: gameInfo.description,
+        images: [
+          {
+            url: cover,
+            alt: `${gameInfo.title}`,
+          },
+        ],
+      }}
+    />
     <S.Cover>
       <Image src={cover} alt={gameInfo.title} layout="fill" />
     </S.Cover>
@@ -65,8 +82,8 @@ const Game = ({
 
       <Showcase
         title={upcomingTitle}
-        highlight={upcomingHighlight}
         games={upcomingGames}
+        highlight={upcomingHighlight}
       />
 
       <Showcase title={recommendedTitle} games={recommendedGames} />
