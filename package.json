@@ -16,6 +16,7 @@
     "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen",
     "test:ci": "jest --runInBand",
     "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
