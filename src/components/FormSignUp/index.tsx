@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   AccountCircle,
   Email,
@@ -27,6 +27,9 @@ const FormSignUp = () => {
     password: '',
   });
 
+  const emailValue = useRef('');
+  const passValue = useRef('');
+
   const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
     onError: (err) =>
       setFormError(
@@ -36,10 +39,12 @@ const FormSignUp = () => {
     onCompleted: () => {
       !error &&
         signIn('credentials', {
-          email: values.email,
-          password: values.password,
+          email: emailValue.current,
+          password: passValue.current,
           callbackUrl: '/',
         });
+
+      console.log(values);
     },
   });
 
@@ -59,6 +64,9 @@ const FormSignUp = () => {
     }
 
     setFieldError({});
+
+    emailValue.current = values.email;
+    passValue.current = values.password;
 
     createUser({
       variables: {
