@@ -29,7 +29,7 @@ describe('User', () => {
     cy.findByText(/javier8/i).should('not.exist');
   });
 
-  it.only('should sign the user and redirect to the page that it was previously defined', () => {
+  it('should sign the user and redirect to the page that it was previously defined', () => {
     cy.visit('/profile/me');
 
     cy.location('href').should(
