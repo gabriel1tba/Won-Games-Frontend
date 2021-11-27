@@ -8,13 +8,25 @@ describe('User', () => {
 
     cy.visit('/sign-up');
 
-    cy.findByPlaceholderText(/username/i).type(user.username);
-    cy.findByPlaceholderText(/email/i).type(user.email);
-    cy.findByPlaceholderText(/^password/i).type(user.password);
-    cy.findByPlaceholderText(/confirm password/i).type(user.password);
-    cy.findByRole('button', { name: /sign up now/i }).click();
+    cy.signUp(user);
 
     cy.url().should('eq', `${Cypress.config().baseUrl}/`);
     cy.findByText(user.username).should('exist');
+  });
+
+  it('should sign in and sign out', () => {
+    cy.visit('/sign-in');
+
+    cy.findAllByPlaceholderText(/email/i).type('e2e@wongames.com');
+    cy.findAllByPlaceholderText(/password/i).type('123456');
+    cy.findByRole('button', { name: /sign in now/i }).click();
+
+    cy.findByText(/cypress/i)
+      .should('exist')
+      .click();
+    cy.findByText(/sign out/i).click();
+
+    cy.findByRole('link', { name: /sign in/i }).should('exist');
+    cy.findByText(/cypress/i).should('not.exist');
   });
 });
