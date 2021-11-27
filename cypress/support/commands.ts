@@ -42,6 +42,16 @@ Cypress.Commands.add('signUp', (user: User) => {
   cy.findByRole('button', { name: /sign up now/i }).click();
 });
 
+Cypress.Commands.add(
+  'signIn',
+  (email = 'javier8+e2e@wongames.com', password = 'senhateste') => {
+    cy.url().should('eq', `${Cypress.config().baseUrl}/sign-in`);
+    cy.findAllByPlaceholderText(/email/i).type(email);
+    cy.findAllByPlaceholderText(/password/i).type(password);
+    cy.findByRole('button', { name: /sign in now/i }).click();
+  },
+);
+
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
     cy.findByRole('heading', { name: /cyberpunk 2077/i });
