@@ -30,7 +30,3 @@ jobs:
 
       - name: Run cypress
         run: yarn test:e2e:ci
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
