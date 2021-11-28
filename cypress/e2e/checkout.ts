@@ -69,7 +69,7 @@ describe('Checkout', () => {
     });
   });
 
-  describe.only('Paid Games', () => {
+  describe('Paid Games', () => {
     before(() => {
       user = createUser();
     });
