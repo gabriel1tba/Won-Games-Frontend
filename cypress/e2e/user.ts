@@ -3,7 +3,7 @@
 import { createUser } from '../support/generate';
 
 describe('User', () => {
-  it.skip('should sign up', () => {
+  it('should sign up', () => {
     const user = createUser();
 
     cy.visit('/sign-up');
