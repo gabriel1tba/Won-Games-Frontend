@@ -112,7 +112,7 @@ export const wishlistItems = [
     title: 'Sample Game 1',
     slug: 'sample-game-1',
     developer: 'sample developer',
-    img: 'http://localhost:1337/sample-game.jpg',
+    img: '/sample-game.jpg',
     price: 10.5,
   },
   {
@@ -120,7 +120,7 @@ export const wishlistItems = [
     title: 'Sample Game 2',
     slug: 'sample-game-2',
     developer: 'sample developer',
-    img: 'http://localhost:1337/sample-game.jpg',
+    img: '/sample-game.jpg',
     price: 10.5,
   },
   {
@@ -128,7 +128,7 @@ export const wishlistItems = [
     title: 'Sample Game 3',
     slug: 'sample-game-3',
     developer: 'sample developer',
-    img: 'http://localhost:1337/sample-game.jpg',
+    img: '/sample-game.jpg',
     price: 10.5,
   },
 ];

@@ -40,15 +40,3 @@ export const IsInCart: Story<GameCardProps & CartContextProps> = (args) => (
 IsInCart.args = {
   isInCart: () => true,
 };
-
-export const WithRibbon: Story<GameCardProps> = (args) => (
-  <div style={{ maxWidth: '30rem' }}>
-    <GameCard {...args} />
-  </div>
-);
-
-WithRibbon.args = {
-  ribbon: '20% OFF',
-  ribbonSize: 'small',
-  ribbonColor: 'primary',
-};

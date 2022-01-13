@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
+import Ribbon from 'components/Ribbon';
 import CartButton from 'components/CartButton';
 import WishlistButton from 'components/WishlistButton';
 
@@ -17,9 +17,6 @@ export type GameCardProps = {
   img: string;
   price: number;
   promotionalPrice?: number;
-  ribbon?: React.ReactNode;
-  ribbonColor?: RibbonColors;
-  ribbonSize?: RibbonSizes;
 };
 
 const GameCard = ({
@@ -30,14 +27,11 @@ const GameCard = ({
   img,
   price,
   promotionalPrice,
-  ribbon,
-  ribbonColor = 'primary',
-  ribbonSize = 'small',
 }: GameCardProps) => (
   <S.Wrapper data-cy="game-card">
-    {!!ribbon && (
-      <Ribbon color={ribbonColor} size={ribbonSize}>
-        {ribbon}
+    {price === 0 && (
+      <Ribbon color="secondary" size="small">
+        FREE
       </Ribbon>
     )}
     <Link href={`/game/${slug}`} passHref>
@@ -59,7 +53,9 @@ const GameCard = ({
         {!!promotionalPrice && (
           <S.Price isPromotional>{formatPrice(price)}</S.Price>
         )}
-        <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+        {price > 0 && (
+          <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+        )}
         <CartButton id={id} />
       </S.BuyBox>
     </S.Content>

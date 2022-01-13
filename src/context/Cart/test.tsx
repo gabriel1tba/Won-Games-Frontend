@@ -6,9 +6,9 @@ import { setStorageItem } from 'utils/localStorage';
 
 import { CartProvider, CartProviderProps } from 'context/Cart';
 
-import useCart from '.';
+import useCart from '../../hooks/useCart';
 
-import { cartItems, gamesMock } from './mock';
+import { cartItems, gamesMock } from '../../hooks/useCart/mock';
 
 describe('useCart', () => {
   beforeEach(() => {
