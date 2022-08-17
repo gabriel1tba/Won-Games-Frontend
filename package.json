@@ -40,7 +40,7 @@
     "@styled-icons/material-outlined": "^10.34.0",
     "@styled-icons/remix-fill": "^10.18.0",
     "dotenv": "^10.0.0",
-    "graphql": "^15.6.0",
+    "graphql": "^16.6.0",
     "joi": "^17.4.2",
     "lodash.xor": "^4.5.0",
     "msw": "^0.35.0",
