@@ -3301,10 +3301,10 @@
     "@types/interpret" "*"
     "@types/node" "*"
 
-"@types/lodash.xor@^4.5.6":
-  version "4.5.6"
-  resolved "https://registry.yarnpkg.com/@types/lodash.xor/-/lodash.xor-4.5.6.tgz#28ffbb779429ff6eac27db208d90124a00a0bff8"
-  integrity sha512-rD3zHQuR04SMUWEn6CHLGYNRHEFgakV4K9QhFFP/Ly5xdN2MWsy+gWFA4MxhY+sKKSSKjktjPVyBTo/6rUdTjA==
+"@types/lodash.xor@^4.5.7":
+  version "4.5.7"
+  resolved "https://registry.yarnpkg.com/@types/lodash.xor/-/lodash.xor-4.5.7.tgz#a8f218586005476b5bfe14a824aca33ae3b26161"
+  integrity sha512-Drr3ZdJWjpo7dNR17QdBwgfQRh7kEhhVVdeTVX0v35bT47zpfGSDYo40Ei0oOqk5DQzzxAYuNuW0s/N3mqBwxw==
   dependencies:
     "@types/lodash" "*"
 
